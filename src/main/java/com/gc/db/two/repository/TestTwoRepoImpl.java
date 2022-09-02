@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +24,18 @@ public class TestTwoRepoImpl implements TestTwoRepo {
 	
 	@Override
 	public List<TestTwoEntity> getTestResult() {
+		 Session session =  factory.openSession();
 		try {
 			
-	
-		Query<TestTwoEntity> query = factory.openSession().createNamedQuery("TestTwoEntity.findAll", TestTwoEntity.class);
+	   
+		Query<TestTwoEntity> query = session.createNamedQuery("TestTwoEntity.findAll", TestTwoEntity.class);
 		List<TestTwoEntity> students = query.getResultList();
 		return students;
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		return Collections.EMPTY_LIST;
 	}

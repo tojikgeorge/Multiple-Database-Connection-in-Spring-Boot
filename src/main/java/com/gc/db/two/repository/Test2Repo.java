@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.gc.db.one.entity.TestEntity;
 import com.gc.db.two.entity.TestTwoEntity;
 
+
 @Repository
 public interface Test2Repo extends JpaRepository<TestTwoEntity, Long> {
 	

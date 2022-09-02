@@ -20,7 +20,7 @@ public class DBService {
 	@Autowired
 	TestTwoRepo test3;
 	
-	
+	@Transactional
 	public String getResult()
 	{
 		String result1 = "";
